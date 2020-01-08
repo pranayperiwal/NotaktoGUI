@@ -43,8 +43,12 @@ class Grid:
         if len(self.keys) == 0:
             surface.fill((0, 0, 0))
             font = pygame.font.SysFont("calibri", 40)
-            text = font.render("Player " + str(player) + " Wins!", True, (0, 255, 0))
-            surface.blit(text, (220, 100))
+            if player == 1:
+                text = font.render("AI Wins!", True, (0, 255, 0))
+            else:
+                text = font.render("You Win!", True, (0, 255, 0))
+            surface.blit(text, (250, 100))
+
 
     def get_cell_value(self, board, pos):
         if board == 'A':

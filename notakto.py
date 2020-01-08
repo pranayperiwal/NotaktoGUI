@@ -34,7 +34,7 @@ scores = {1: 10, 2: -10}
 
 def minimax(key, copyp, depth, isMaximizing, player, alpha, beta):
     grid.check(key, copyp)
-    if len(grid.pattern) > 1:
+    if len(grid.pattern) > 2:
         if depth == 4:
             return scores[player]
     elif len(copyp) == 0:
@@ -77,7 +77,7 @@ player = count = 1
 while running:
     surface.fill((0, 0, 0))
     if player == 1:
-        text = font.render("AI player's move", True, (255, 255, 255))
+        text = font.render("AI player's thinking", True, (255, 255, 255))
     else:
         text = font.render("Your move", True, (255, 255, 255))
 
@@ -99,7 +99,7 @@ while running:
             player = 1
             break
         if player == 1:
-            time.sleep(2)
+            time.sleep(1.5)
             player = 2
             if count <= 2:
                 count += 1
@@ -127,5 +127,8 @@ while running:
 
     if len(grid.pattern) == 0:
         running = False
+
     grid.draw(surface, player)
     pygame.display.flip()
+
+time.sleep(1.5)
