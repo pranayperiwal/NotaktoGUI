@@ -2,6 +2,7 @@ import pygame
 from grid import Grid
 import copy
 import os
+import time
 
 os.environ['SDL_VIDEO_WINDOW_POS'] = '350,100'
 
@@ -75,7 +76,11 @@ def minimax(key, copyp, depth, isMaximizing, player, alpha, beta):
 player = count = 1
 while running:
     surface.fill((0, 0, 0))
-    text = font.render("Player " + str(player) + "'s move", True, (255, 255, 255))
+    if player == 1:
+        text = font.render("AI player's move", True, (255, 255, 255))
+    else:
+        text = font.render("Your move", True, (255, 255, 255))
+
     surface.blit(text, (10, 220))
 
     for event in pygame.event.get():
@@ -94,6 +99,7 @@ while running:
             player = 1
             break
         if player == 1:
+            time.sleep(2)
             player = 2
             if count <= 2:
                 count += 1
